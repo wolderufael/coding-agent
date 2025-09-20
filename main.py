@@ -34,3 +34,7 @@ def main():
         print("User Prompt: ", prompt)
         print("Prompt Token: ", response.usage_metadata.prompt_token_count)
         print("Candidates Token: ", response.usage_metadata.candidates_token_count)
+
+
+if __name__ == "__main__":
+    main()

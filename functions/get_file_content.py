@@ -1,6 +1,6 @@
 import os
+from config import MAX_CHARS
 
-MAX_CHARS = 10000
 
 def get_file_content(working_directory,file_path):
     abs_working_directory = os.path.abspath(working_directory)
@@ -12,9 +12,14 @@ def get_file_content(working_directory,file_path):
     if not os.path.isfile(abs_file_path):
         return f"Erorr: {file_path} is not a file"
 
-    file_contenet_string = ""
-    with open(abs_file_path, "r") as f:
-        file_content_string = f.read(MAX_CHARS)
+    try:
+        file_content_string = ""
+        with open(abs_file_path, "r") as f:
+            file_content_string = f.read(MAX_CHARS)
+            if len(file_content_string) > MAX_CHARS:
+                file_content_string += "... File truncated at 10000 characters"
+    except Exception as e:
+        return f"Erorr reading file: {e}"
 
     return file_content_string
 
