@@ -79,6 +79,7 @@ def main():
     - Write to a file
     - Run a python file with optional CLI arguments
 
+    When the user ask the code project - they are refering to the working directory.So you should typically start by looking at the project;s files and figuring out how to run the project and how to run the tests , you will always test the tests and the actual project tp verify that behavior is working.
     All paths you provide should be relative to the working directory. You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
     """
 

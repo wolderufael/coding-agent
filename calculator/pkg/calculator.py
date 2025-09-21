@@ -59,3 +59,10 @@ class Calculator:
         b = values.pop()
         a = values.pop()
         values.append(self.operators[operator](a, b))
+
+if __name__ == "__main__":
+    import sys
+    calculator = Calculator()
+    expression = " ".join(sys.argv[1:])
+    result = calculator.evaluate(expression)
+    print(result)
