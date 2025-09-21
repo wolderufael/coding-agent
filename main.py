@@ -6,6 +6,7 @@ from functions.get_files_info import schema_get_files_info
 from functions.get_file_content import schema_get_file_content
 from functions.write_file import schema_write_file
 from functions.run_python_file import schema_run_python_file
+from call_function import call_function
 
 
 def main():
@@ -20,6 +21,9 @@ def main():
     When a user asks a question or makes a request, make a function call plan. You can perform the following operations:
 
     - List files and directories
+    - Get the content of a file
+    - Write to a file
+    - Run a python file with optional CLI arguments
 
     All paths you provide should be relative to the working directory. You do not need to specify the working directory in your function calls as it is automatically injected for security reasons.
     """
@@ -62,7 +66,9 @@ def main():
     
     if response.function_calls:
         for function_call_part in response.function_calls:
-            print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+            # print(f"Calling function: {function_call_part.name}({function_call_part.args})")
+            response = call_function(function_call_part, verbose_flag)
+            print(response)
     else:
         print(response.text)
 
